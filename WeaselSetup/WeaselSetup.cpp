@@ -123,13 +123,13 @@ static int CustomInstall(bool installing) {
   if (_has_installed) {
     std::wstring dir(install_dir());
     std::thread th([dir]() {
-      ShellExecuteW(NULL, NULL, (dir + L"\\WeaselServer.exe").c_str(), L"/q",
+      ShellExecuteW(NULL, L"open", (dir + L"\\WeaselServer.exe").c_str(), L"/q",
                     NULL, SW_SHOWNORMAL);
       Sleep(500);
-      ShellExecuteW(NULL, NULL, (dir + L"\\WeaselServer.exe").c_str(), L"",
+      ShellExecuteW(NULL, L"open", (dir + L"\\WeaselServer.exe").c_str(), L"",
                     NULL, SW_SHOWNORMAL);
       Sleep(500);
-      ShellExecuteW(NULL, NULL, (dir + L"\\WeaselDeployer.exe").c_str(),
+      ShellExecuteW(NULL, L"open", (dir + L"\\WeaselDeployer.exe").c_str(),
                     L"/deploy", NULL, SW_SHOWNORMAL);
     });
     th.detach();
